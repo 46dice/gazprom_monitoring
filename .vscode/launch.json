@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend: FastAPI",
+      "type": "debugpy",
+      "request": "launch",
+      // Интерпретатор задан явно: иначе отладчик берёт тот, что выбран в VS Code,
+      // и может уйти в системный Python, где нет зависимостей проекта.
+      "python": "${workspaceFolder}/backend/.venv/Scripts/python.exe",
+      "module": "uvicorn",
+      // Без --reload: с ним uvicorn запускает код в дочернем процессе,
+      // и точки останова срабатывают через раз. После правки — перезапуск (Ctrl+Shift+F5).
+      "args": ["main:app", "--port", "8000"],
+      // Импорты в коде идут от src/ (from api.routers import …); backend/.env
+      // читает сам pydantic-settings, отдельный envFile не нужен.
+      "cwd": "${workspaceFolder}/backend/src",
+      "env": { "PYTHONIOENCODING": "utf-8" },
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

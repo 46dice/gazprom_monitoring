@@ -1,0 +1,9 @@
+{
+  // Интерпретатор из backend/.venv — его и возьмёт отладчик.
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/Scripts/python.exe",
+  // Pylance должен видеть импорты от src/ так же, как uvicorn.
+  "python.analysis.extraPaths": ["${workspaceFolder}/backend/src"],
+  // Учебный образец — не наше приложение, не индексируем.
+  "python.analysis.exclude": ["**/fastapi-onion-architecture/**", "**/node_modules/**"],
+  "typescript.tsdk": "frontend/node_modules/typescript/lib"
+}
